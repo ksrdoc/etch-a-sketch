@@ -83,6 +83,21 @@ input.slider {
     cursor: pointer;
 }
 
+#clearBtn {
+    background-color: rgb(190, 28, 28);
+    color: whitesmoke;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 5px;
+    border: solid 2px darkslateblue;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+#clearBtn:hover {
+    background-color: rgb(236, 57, 57);
+}
+
 #blackBtn:hover, #randomBtn:hover, #eraserBtn:hover, #darkenBtn:hover {
     background-color: rgb(117, 160, 224)
 }
