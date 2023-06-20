@@ -20,6 +20,16 @@ slider.addEventListener ('input', function() {
     console.log ("Slider value:", slider.value)
     console.log ("GridScale is:", gridScale)
 
+    const cell = document.createElement("cell");
+
+    function clearGrid (gridScale) {
+        for (let i = 0; i < gridScale - 1; i++) {
+            grid.removeChild(cell);
+        }
+    }
+
+    //clearGrid (gridScale)
+
     function makeCells (gridScale) {
         for (let i = 0; i < gridScale; i++) {
             const cell = document.createElement("cell");
