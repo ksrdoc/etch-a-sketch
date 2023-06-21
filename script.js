@@ -1,29 +1,40 @@
-// Grid default
-
+// Grid default with 16x16
 
 
 document.addEventListener ('DOMContentLoaded', function () {
-    createGrid()
+    createGrid(size)
 })
+
+let size = slider.value;
+
 
 function createGrid (size) {
     let grid = document.querySelector (".grid");
+
     grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
     grid.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+
+    let cellDivs = size * size;
+
+    for (let i = 0; i < cellDivs; i++){
+        let cellDiv = document.createElement("cellDiv");
+        cellDiv.classList.add("cellDiv");
+        grid.insertAdjacentElement ("beforeend",cellDiv);
+    }
 }
 
 //Slider
 
-function getSliderValue () {
-    const slider = document.getElementById('slider');
-    const sliderValue = slider.value;
-    console.log ("Slider value:", sliderValue)
-    return sliderValue
-}
+// function getSliderValue () {
+//     const slider = document.getElementById('slider');
+//     const sliderValue = slider.value;
+//     console.log ("Slider value:", sliderValue)
+//     return sliderValue
+// }
 
 let sliderScale = document.getElementById ('sliderScale');
 
-/*
+
 
 //Grid
 
@@ -51,7 +62,7 @@ let sliderScale = document.getElementById ('sliderScale');
 
     makeCells(gridColumnRow);
 
-}) */
+})
 
 
 
