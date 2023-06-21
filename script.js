@@ -1,20 +1,34 @@
+// Grid default
+
+
+
+document.addEventListener ('DOMContentLoaded', function () {
+    createGrid()
+})
+
+function createGrid (size) {
+    let grid = document.querySelector (".grid");
+    grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+    grid.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+}
+
 //Slider
 
 function getSliderValue () {
     const slider = document.getElementById('slider');
     const sliderValue = slider.value;
     console.log ("Slider value:", sliderValue)
+    return sliderValue
 }
 
 let sliderScale = document.getElementById ('sliderScale');
 
-
+/*
 
 //Grid
 
-const grid = document.querySelector('.grid')
-
-slider.addEventListener ('input', function() {
+ slider.addEventListener ('input', function() {
+    let grid = document.querySelector('.grid');
     let gridScale = slider.value * slider.value;
     sliderScale.innerText = slider.value + " " + "x" + " " + slider.value;
     console.log ("Slider value:", slider.value)
@@ -22,23 +36,22 @@ slider.addEventListener ('input', function() {
 
     const cell = document.createElement("cell");
 
-    function clearGrid (gridScale) {
-        for (let i = 0; i < gridScale - 1; i++) {
-            grid.removeChild(cell);
-        }
-    }
+    let gridColumnRow = slider.value;
 
-    //clearGrid (gridScale)
-
-    function makeCells (gridScale) {
-        for (let i = 0; i < gridScale; i++) {
+    function makeCells (gridColumnRow) {
+        for (let i = 0; i < gridColumnRow; i++) {
+            for (let j = 0; j < gridColumnRow; j++) {
             const cell = document.createElement("cell");
             cell.classList.add("cell");
             grid.append(cell);
+            }  
         }
     }
-    makeCells(gridScale);
-})
+
+
+    makeCells(gridColumnRow);
+
+}) */
 
 
 
