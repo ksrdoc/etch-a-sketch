@@ -84,7 +84,37 @@ const slider = document.getElementById("slider");
 const sliderScale = document.getElementById("sliderScale");
 const cellel = document.querySelectorAll("celldiv");
 
-let cells;
+let sliderValue = slider.value;
+let cells = slider.value * slider.value;
+
+//Function to clear the grid
+
+const clearGrid = function () {
+  cells = 0;
+  grid.replaceChildren();
+  grid.style.gridTemplateColumns = "";
+  grid.style.gridTemplateRows = "";
+};
+
+//Function to create a grid
+
+const createGrid = function () {
+  clearGrid();
+  cells = slider.value * slider.value;
+  grid.style.gridTemplateColumns = `repeat(${slider.value}, 1fr)`;
+  grid.style.gridTemplateRows = `repeat(${slider.value}, 1fr)`;
+  console.log(cells);
+
+  for (let i = 0; i < cells; i++) {
+    let cellDiv = document.createElement("div");
+    cellDiv.classList.add("cell");
+    // Remember to edit the event listener here later!!!!
+    //cellDiv.addEventListener("mouseover", function () {
+    //cellDiv.style.backgroundColor = "red";
+    //});
+    grid.insertAdjacentElement("beforeend", cellDiv);
+  }
+};
 
 //Create initial grid
 
@@ -108,7 +138,12 @@ function initialGrid() {
 
 slider.addEventListener("input", function () {
   sliderScale.textContent = `${slider.value} x ${slider.value}`;
+  clearGrid();
+  createGrid();
+  console.log(slider.value);
+  console.log(cells);
 });
 
-console.log(slider.value);
 //replacechildren() to use later to clear the grid
+//make a function for clearing the grid
+//make a function to create the grid
