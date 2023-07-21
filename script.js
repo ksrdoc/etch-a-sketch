@@ -1,6 +1,6 @@
 // Grid default with 16x16
 
-
+/*
 document.addEventListener ('DOMContentLoaded', function () {
     createGrid(size)
 })
@@ -18,7 +18,7 @@ function createGrid (size) {
 
     for (let i = 0; i < cellDivs; i++){
         let cellDiv = document.createElement("cellDiv");
-        cellDiv.classList.add("cellDiv");
+        cellDiv.classList.add("cellDiv");gi
         grid.insertAdjacentElement ("beforeend",cellDiv);
     }
 }
@@ -64,12 +64,51 @@ let sliderScale = document.getElementById ('sliderScale');
 
 })
 
+PREVIOUS CODE
 
+NEW CODE
+*/
 
+document.addEventListener("DOMContentLoaded", initialGrid);
+//CREATING BASIC GRID HERE;
 
+// Selectors
 
+const grid = document.getElementById("grid");
+const btnBlack = document.getElementById("blackBtn");
+const btnRandom = document.getElementById("randomBtn");
+const btnEraser = document.getElementById("eraserBtn");
+const btnDarken = document.getElementById("darkenBtn");
+const btnClear = document.getElementById("clearBtn");
+const slider = document.getElementById("slider");
+const sliderScale = document.getElementById("sliderScale");
+const cellel = document.querySelectorAll("celldiv");
 
+let cells;
 
+//Create initial grid
 
+function initialGrid() {
+  grid.style.gridTemplateColumns = `repeat(16, 1fr)`;
+  grid.style.gridTemplateRows = `repeat(16, 1fr)`;
+  cells = 256;
 
+  for (let i = 0; i < cells; i++) {
+    let cellDiv = document.createElement("div");
+    cellDiv.classList.add("cell");
+    // Remember to edit the event listener here later!!!!
+    //cellDiv.addEventListener("mouseover", function () {
+    //cellDiv.style.backgroundColor = "red";
+    //});
+    grid.insertAdjacentElement("beforeend", cellDiv);
+  }
+}
 
+// Slider
+
+slider.addEventListener("input", function () {
+  sliderScale.textContent = `${slider.value} x ${slider.value}`;
+});
+
+console.log(slider.value);
+//replacechildren() to use later to clear the grid
