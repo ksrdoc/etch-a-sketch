@@ -1,127 +1,136 @@
 body {
-    margin: 0px;
-    height: 100vh;
-    background: url(bgImg.jpg) no-repeat center center/cover;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 60px;
+  margin: 0px;
+  height: 100vh;
+  background: url(bgImg.jpg) no-repeat center center/cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
 }
 
 header {
-    font-size: 45px;
-    font-weight: 600;
-    display: flex;
-    justify-content: center;
-    align-self: center;
-    background-color: rgb(51, 126, 240);
-    color: orange;
-    width: 100%;
-    padding: 10px 790px;
-    border-bottom: solid darkslateblue 4px;
-    border-radius: 4px;
+  font-size: 45px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  background-color: rgb(51, 126, 240);
+  color: orange;
+  width: 100%;
+  padding: 10px 790px;
+  border-bottom: solid darkslateblue 4px;
+  border-radius: 4px;
 }
 
 .container {
-      height: 8000px;
-      width: 850px;
-      background-color: orange;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border: solid 5px darkslateblue;
-      border-radius: 12px;
-      box-shadow: 0 0 3px black;
+  height: 8000px;
+  width: 850px;
+  background-color: orange;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: solid 5px darkslateblue;
+  border-radius: 12px;
+  box-shadow: 0 0 3px black;
 }
 
 /* Buttons */
 
 .buttons {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items:normal;
-    margin-left: 60px;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: normal;
+  margin-left: 60px;
+  gap: 20px;
 }
 
 .slider {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-    font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 input.slider {
-    cursor: pointer;
-    opacity: 0.9
+  cursor: pointer;
+  opacity: 0.9;
 }
 
 #sliderScale {
-    color: black;
-    font-size: 24px;
-    font-weight: bold;
+  color: black;
+  font-size: 24px;
+  font-weight: bold;
 }
 
 .colorBtns {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-#blackBtn, #randomBtn, #eraserBtn, #darkenBtn {
-    background-color: rgb(51, 126, 240);
-    color: whitesmoke;
-    font-size: 18px;
-    font-weight: 600;
-    padding: 5px;
-    border: solid 2px darkslateblue;
-    border-radius: 30px;
-    cursor: pointer;
+#blackBtn,
+#randomBtn,
+#eraserBtn,
+#darkenBtn {
+  background-color: rgb(51, 126, 240);
+  color: whitesmoke;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 5px;
+  border: solid 2px darkslateblue;
+  border-radius: 30px;
+  cursor: pointer;
 }
 
 #clearBtn {
-    background-color: rgb(190, 28, 28);
-    color: whitesmoke;
-    font-size: 18px;
-    font-weight: 600;
-    padding: 5px;
-    border: solid 2px darkslateblue;
-    border-radius: 30px;
-    cursor: pointer;
+  background-color: rgb(190, 28, 28);
+  color: whitesmoke;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 5px;
+  border: solid 2px darkslateblue;
+  border-radius: 30px;
+  cursor: pointer;
 }
 
 #clearBtn:hover {
-    background-color: rgb(236, 57, 57);
+  background-color: rgb(236, 57, 57);
 }
 
-#blackBtn:hover, #randomBtn:hover, #eraserBtn:hover, #darkenBtn:hover {
-    background-color: rgb(117, 160, 224)
+#blackBtn:hover,
+#randomBtn:hover,
+#eraserBtn:hover,
+#darkenBtn:hover {
+  background-color: rgb(117, 160, 224);
 }
 
-/* Grid */ 
+/* Grid */
 
-
-.grid {
-    background-color: whitesmoke;
-    width: 550px;
-    height: 550px;
-    display: grid;
-    margin-right: 60px;
-    outline: solid black;
+#grid {
+  background-color: whitesmoke;
+  width: 550px;
+  height: 550px;
+  display: grid;
+  margin-right: 60px;
+  outline: solid black;
 }
-
-
 
 footer {
-    width: 100%;
-    height: 30%;
-    font-size: 18px;
-    background-color: rgba(45, 114, 218, 0.993);
-    text-align: center;
-    color: orange;
-    padding: 0px 851px;
-    border-top: solid 4px darkslateblue;
+  width: 100%;
+  height: 30%;
+  font-size: 18px;
+  background-color: rgba(45, 114, 218, 0.993);
+  text-align: center;
+  color: orange;
+  padding: 0px 851px;
+  border-top: solid 4px darkslateblue;
+}
+
+.cell {
+  outline-style: solid;
+  outline-color: gray;
+  outline-width: 1px;
 }
