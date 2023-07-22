@@ -86,6 +86,7 @@ const cellel = document.querySelectorAll("celldiv");
 
 let sliderValue = slider.value;
 let cells = slider.value * slider.value;
+let color = "#000000";
 
 //Function to clear the grid
 
@@ -109,9 +110,9 @@ const createGrid = function () {
     let cellDiv = document.createElement("div");
     cellDiv.classList.add("cell");
     // Remember to edit the event listener here later!!!!
-    //cellDiv.addEventListener("mouseover", function () {
-    //cellDiv.style.backgroundColor = "red";
-    //});
+    cellDiv.addEventListener("mousedown", function () {
+      cellDiv.style.backgroundColor = `${color}`;
+    });
     grid.insertAdjacentElement("beforeend", cellDiv);
   }
 };
