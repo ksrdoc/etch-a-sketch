@@ -130,7 +130,7 @@ footer {
 }
 
 .cell {
-  outline-style: solid;
-  outline-color: gray;
-  outline-width: 1px;
+  border-top: solid;
+  border-left: solid;
+  border-color: black;
 }
