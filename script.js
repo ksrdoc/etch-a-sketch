@@ -82,7 +82,7 @@ const btnDarken = document.getElementById("darkenBtn");
 const btnClear = document.getElementById("clearBtn");
 const slider = document.getElementById("slider");
 const sliderScale = document.getElementById("sliderScale");
-const cellel = document.querySelectorAll("celldiv");
+const cellel = document.querySelectorAll("cellDiv");
 
 let sliderValue = slider.value;
 let cells = slider.value * slider.value;
@@ -110,7 +110,7 @@ const createGrid = function () {
     let cellDiv = document.createElement("div");
     cellDiv.classList.add("cell");
     // Remember to edit the event listener here later!!!!
-    cellDiv.addEventListener("mousedown", function () {
+    cellDiv.addEventListener("mouseover", function () {
       cellDiv.style.backgroundColor = `${color}`;
     });
     grid.insertAdjacentElement("beforeend", cellDiv);
@@ -127,10 +127,11 @@ function initialGrid() {
   for (let i = 0; i < cells; i++) {
     let cellDiv = document.createElement("div");
     cellDiv.classList.add("cell");
+    cellDiv.setAttribute("draggable", "false");
     // Remember to edit the event listener here later!!!!
-    //cellDiv.addEventListener("mouseover", function () {
-    //cellDiv.style.backgroundColor = "red";
-    //});
+    cellDiv.addEventListener("mouseover", function () {
+      cellDiv.style.backgroundColor = `${color}`;
+    });
     grid.insertAdjacentElement("beforeend", cellDiv);
   }
 }
@@ -143,6 +144,13 @@ slider.addEventListener("input", function () {
   createGrid();
   console.log(slider.value);
   console.log(cells);
+});
+
+// Button for clearing the grid
+
+btnClear.addEventListener("click", createGrid);
+btnBlack.addEventListener("click", function () {
+  color = "black";
 });
 
 //replacechildren() to use later to clear the grid
