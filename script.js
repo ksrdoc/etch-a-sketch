@@ -146,27 +146,27 @@ slider.addEventListener("input", function () {
   console.log(cells);
 });
 
-// Button for clearing the grid
+// Buttons
 
 btnClear.addEventListener("click", createGrid);
 btnBlack.addEventListener("click", function () {
   color = "black";
 });
-
-// random color function
-
-const randomColor = function () {
-  return Math.trunc(Math.random() * 256);
-};
-
-btnRandom.addEventListener("click", function () {
-  color = `rgb(${randomColor()}, ${randomColor()}, ${randomColor()})`;
-});
-
 btnEraser.addEventListener("click", function () {
   color = "whitesmoke";
 });
-//replacechildren() to use later to clear the grid
-//make a function for clearing the grid
-//make a function to create the grid
-// make a random color rgb btn by making the color variable composed of 3 random 256 numbers
+
+const colorR = function () {
+  return Math.trunc(Math.random() * 256);
+};
+
+const colorG = function () {
+  return Math.trunc(Math.random() * 256);
+};
+
+const colorB = function () {
+  return Math.trunc(Math.random() * 256);
+};
+btnRandom.addEventListener("click", function () {
+  color = `rgb(${colorR()}, ${colorG()}, ${colorB()})`;
+});
