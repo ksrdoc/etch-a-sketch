@@ -18,6 +18,28 @@ let color = "#000000";
 let mousePress = false;
 let randomColor = false;
 
+//Function to set the grid
+
+const setGrid = function () {
+  for (let i = 0; i < cells; i++) {
+    let cellDiv = document.createElement("div");
+    cellDiv.classList.add("cell");
+    cellDiv.addEventListener("mouseover", function () {
+      if (mousePress) {
+        cellDiv.style.backgroundColor = `${color}`;
+      }
+      if (randomColor && mousePress) {
+        cellDiv.style.backgroundColor = `rgb(${colorRBG()},${colorRBG()},${colorRBG()})`;
+      }
+    });
+    grid.insertAdjacentElement("beforeend", cellDiv);
+  }
+};
+
+//Function for random RBG
+
+const colorRBG = () => Math.trunc(Math.random() * 256);
+
 // Function to create click-draw mechanic
 
 const clickDraw = function () {
@@ -50,22 +72,7 @@ const createGrid = function () {
   cells = slider.value * slider.value;
   grid.style.gridTemplateColumns = `repeat(${slider.value}, 1fr)`;
   grid.style.gridTemplateRows = `repeat(${slider.value}, 1fr)`;
-  console.log(cells);
-
-  for (let i = 0; i < cells; i++) {
-    let cellDiv = document.createElement("div");
-    cellDiv.classList.add("cell");
-    // Remember to edit the event listener here later!!!!
-    cellDiv.addEventListener("mouseover", function () {
-      if (mousePress) {
-        cellDiv.style.backgroundColor = `${color}`;
-      }
-      if (randomColor && mousePress) {
-        cellDiv.style.backgroundColor = `rgb(${colorRBG()},${colorRBG()},${colorRBG()})`;
-      }
-    });
-    grid.insertAdjacentElement("beforeend", cellDiv);
-  }
+  setGrid();
 };
 
 //Create initial grid
@@ -74,22 +81,7 @@ function initialGrid() {
   grid.style.gridTemplateColumns = `repeat(16, 1fr)`;
   grid.style.gridTemplateRows = `repeat(16, 1fr)`;
   cells = 256;
-
-  for (let i = 0; i < cells; i++) {
-    let cellDiv = document.createElement("div");
-    cellDiv.classList.add("cell");
-    cellDiv.setAttribute("draggable", "false");
-    // Remember to edit the event listener here later!!!!
-    cellDiv.addEventListener("mouseover", function () {
-      if (mousePress) {
-        cellDiv.style.backgroundColor = `${color}`;
-      }
-      if (randomColor && mousePress) {
-        cellDiv.style.backgroundColor = `rgb(${colorRBG()},${colorRBG()},${colorRBG()})`;
-      }
-    });
-    grid.insertAdjacentElement("beforeend", cellDiv);
-  }
+  setGrid();
   clickDraw();
 }
 
@@ -99,25 +91,22 @@ slider.addEventListener("input", function () {
   sliderScale.textContent = `${slider.value} x ${slider.value}`;
   clearGrid();
   createGrid();
-  console.log(slider.value);
-  console.log(cells);
 });
 
 // Buttons
-
-btnClear.addEventListener("click", createGrid);
 
 btnBlack.addEventListener("click", function () {
   color = "black";
   randomColor = false;
 });
+
+btnRandom.addEventListener("click", function () {
+  randomColor = true;
+});
+
 btnEraser.addEventListener("click", function () {
   color = "whitesmoke";
   randomColor = false;
 });
 
-const colorRBG = () => Math.trunc(Math.random() * 256);
-
-btnRandom.addEventListener("click", function () {
-  randomColor = true;
-});
+btnClear.addEventListener("click", createGrid);
