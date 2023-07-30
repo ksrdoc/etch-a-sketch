@@ -1,74 +1,3 @@
-// Grid default with 16x16
-
-/*
-document.addEventListener ('DOMContentLoaded', function () {
-    createGrid(size)
-})
-
-let size = slider.value;
-
-
-function createGrid (size) {
-    let grid = document.querySelector (".grid");
-
-    grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
-    grid.style.gridTemplateRows = `repeat(${size}, 1fr)`;
-
-    let cellDivs = size * size;
-
-    for (let i = 0; i < cellDivs; i++){
-        let cellDiv = document.createElement("cellDiv");
-        cellDiv.classList.add("cellDiv");gi
-        grid.insertAdjacentElement ("beforeend",cellDiv);
-    }
-}
-
-//Slider
-
-// function getSliderValue () {
-//     const slider = document.getElementById('slider');
-//     const sliderValue = slider.value;
-//     console.log ("Slider value:", sliderValue)
-//     return sliderValue
-// }
-
-let sliderScale = document.getElementById ('sliderScale');
-
-
-
-//Grid
-
- slider.addEventListener ('input', function() {
-    let grid = document.querySelector('.grid');
-    let gridScale = slider.value * slider.value;
-    sliderScale.innerText = slider.value + " " + "x" + " " + slider.value;
-    console.log ("Slider value:", slider.value)
-    console.log ("GridScale is:", gridScale)
-
-    const cell = document.createElement("cell");
-
-    let gridColumnRow = slider.value;
-
-    function makeCells (gridColumnRow) {
-        for (let i = 0; i < gridColumnRow; i++) {
-            for (let j = 0; j < gridColumnRow; j++) {
-            const cell = document.createElement("cell");
-            cell.classList.add("cell");
-            grid.append(cell);
-            }  
-        }
-    }
-
-
-    makeCells(gridColumnRow);
-
-})
-
-PREVIOUS CODE
-
-NEW CODE
-*/
-
 document.addEventListener("DOMContentLoaded", initialGrid);
 //CREATING BASIC GRID HERE;
 
@@ -87,6 +16,18 @@ const cellel = document.querySelectorAll("cellDiv");
 let sliderValue = slider.value;
 let cells = slider.value * slider.value;
 let color = "#000000";
+let mousePress = false;
+
+grid.addEventListener("mousedown", function () {
+  if (mousePress === false) {
+    mousePress = true;
+  }
+});
+grid.addEventListener("click", function () {
+  if (mousePress === true) {
+    mousePress = false;
+  }
+});
 
 //Function to clear the grid
 
@@ -130,7 +71,9 @@ function initialGrid() {
     cellDiv.setAttribute("draggable", "false");
     // Remember to edit the event listener here later!!!!
     cellDiv.addEventListener("mouseover", function () {
-      cellDiv.style.backgroundColor = `${color}`;
+      if (mousePress) {
+        cellDiv.style.backgroundColor = `${color}`;
+      }
     });
     grid.insertAdjacentElement("beforeend", cellDiv);
   }
