@@ -16,7 +16,9 @@ const cellel = document.querySelectorAll("cellDiv");
 let cells = slider.value * slider.value;
 let color = "#000000";
 let mousePress = false;
+let drawingColor = true;
 let randomColor = false;
+let darken = false;
 
 //Function to set the grid
 
@@ -25,11 +27,14 @@ const setGrid = function () {
     let cellDiv = document.createElement("div");
     cellDiv.classList.add("cell");
     cellDiv.addEventListener("mouseover", function () {
-      if (mousePress) {
+      if (mousePress && drawingColor) {
         cellDiv.style.backgroundColor = `${color}`;
       }
-      if (randomColor && mousePress) {
+      if (randomColor && mousePress && drawingColor) {
         cellDiv.style.backgroundColor = `rgb(${colorRBG()},${colorRBG()},${colorRBG()})`;
+      }
+      if (darken && mousePress && !drawingColor) {
+        cellDiv.style.filter = `brightness(${colorDarken()})`;
       }
     });
     grid.insertAdjacentElement("beforeend", cellDiv);
@@ -53,6 +58,12 @@ const clickDraw = function () {
       mousePress = false;
     }
   });
+};
+
+// Function for darken color -- NEED FIXUNG ONE DAY
+
+const colorDarken = function () {
+  return 0.5;
 };
 
 //Function to clear the grid
@@ -96,17 +107,29 @@ slider.addEventListener("input", function () {
 // Buttons
 
 btnBlack.addEventListener("click", function () {
+  drawingColor = true;
   color = "black";
   randomColor = false;
+  darken = false;
 });
 
 btnRandom.addEventListener("click", function () {
+  drawingColor = true;
   randomColor = true;
+  darken = false;
 });
 
 btnEraser.addEventListener("click", function () {
+  drawingColor = true;
   color = "whitesmoke";
   randomColor = false;
+  darken = false;
+});
+
+btnDarken.addEventListener("click", function () {
+  drawingColor = false;
+  randomColor = false;
+  darken = true;
 });
 
 btnClear.addEventListener("click", createGrid);
