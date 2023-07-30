@@ -16,6 +16,7 @@ const cellel = document.querySelectorAll("cellDiv");
 let cells = slider.value * slider.value;
 let color = "#000000";
 let mousePress = false;
+let randomColor = false;
 
 // Function to create click-draw mechanic
 
@@ -59,6 +60,9 @@ const createGrid = function () {
       if (mousePress) {
         cellDiv.style.backgroundColor = `${color}`;
       }
+      if (randomColor && mousePress) {
+        cellDiv.style.backgroundColor = `rgb(${colorRBG()},${colorRBG()},${colorRBG()})`;
+      }
     });
     grid.insertAdjacentElement("beforeend", cellDiv);
   }
@@ -80,6 +84,9 @@ function initialGrid() {
       if (mousePress) {
         cellDiv.style.backgroundColor = `${color}`;
       }
+      if (randomColor && mousePress) {
+        cellDiv.style.backgroundColor = `rgb(${colorRBG()},${colorRBG()},${colorRBG()})`;
+      }
     });
     grid.insertAdjacentElement("beforeend", cellDiv);
   }
@@ -99,24 +106,18 @@ slider.addEventListener("input", function () {
 // Buttons
 
 btnClear.addEventListener("click", createGrid);
+
 btnBlack.addEventListener("click", function () {
   color = "black";
+  randomColor = false;
 });
 btnEraser.addEventListener("click", function () {
   color = "whitesmoke";
+  randomColor = false;
 });
 
-const colorR = function () {
-  return Math.trunc(Math.random() * 256);
-};
+const colorRBG = () => Math.trunc(Math.random() * 256);
 
-const colorG = function () {
-  return Math.trunc(Math.random() * 256);
-};
-
-const colorB = function () {
-  return Math.trunc(Math.random() * 256);
-};
 btnRandom.addEventListener("click", function () {
-  color = `rgb(${colorR()}, ${colorG()}, ${colorB()})`;
+  randomColor = true;
 });
