@@ -13,21 +13,24 @@ const slider = document.getElementById("slider");
 const sliderScale = document.getElementById("sliderScale");
 const cellel = document.querySelectorAll("cellDiv");
 
-let sliderValue = slider.value;
 let cells = slider.value * slider.value;
 let color = "#000000";
 let mousePress = false;
 
-grid.addEventListener("mousedown", function () {
-  if (mousePress === false) {
-    mousePress = true;
-  }
-});
-grid.addEventListener("click", function () {
-  if (mousePress === true) {
-    mousePress = false;
-  }
-});
+// Function to create click-draw mechanic
+
+const clickDraw = function () {
+  grid.addEventListener("mousedown", function () {
+    if (mousePress === false) {
+      mousePress = true;
+    }
+  });
+  grid.addEventListener("click", function () {
+    if (mousePress === true) {
+      mousePress = false;
+    }
+  });
+};
 
 //Function to clear the grid
 
@@ -42,6 +45,7 @@ const clearGrid = function () {
 
 const createGrid = function () {
   clearGrid();
+  clickDraw();
   cells = slider.value * slider.value;
   grid.style.gridTemplateColumns = `repeat(${slider.value}, 1fr)`;
   grid.style.gridTemplateRows = `repeat(${slider.value}, 1fr)`;
@@ -52,7 +56,9 @@ const createGrid = function () {
     cellDiv.classList.add("cell");
     // Remember to edit the event listener here later!!!!
     cellDiv.addEventListener("mouseover", function () {
-      cellDiv.style.backgroundColor = `${color}`;
+      if (mousePress) {
+        cellDiv.style.backgroundColor = `${color}`;
+      }
     });
     grid.insertAdjacentElement("beforeend", cellDiv);
   }
@@ -77,6 +83,7 @@ function initialGrid() {
     });
     grid.insertAdjacentElement("beforeend", cellDiv);
   }
+  clickDraw();
 }
 
 // Slider
